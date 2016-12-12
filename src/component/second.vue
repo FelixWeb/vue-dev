@@ -1,8 +1,15 @@
 <template>
     <div v-loading="loading">
-        <div></div>
-        <ul>
-            <li v-for="item in dataList">{{item.title}}</li>
+        <ul class="item-ul">
+            <li v-for="item in dataList">
+                <span class="item-img-span" v-if="item.has_image">
+                    <img class="item-img" v-bind:src="item.image_list.length>0? item.image_list[0].url:item.image_url" alt="">
+                </span>
+                <span class="item-img-span" v-else>
+                    <img class="item-img" src="../assets/no-img.png" alt="">
+                </span>
+                <span class="item-title"><a :href="item.url">{{item.title}}</a></span>
+            </li>
         </ul>
     </div>
 </template>
@@ -22,11 +29,17 @@
                 },
                 emulateJSON: true
             }).then(function(response) {// 这里是处理正确的回调
+
                 console.log(response.data.data)
-                this.loading = false; //加载完成开关
+
+                this.loading = false; //加载完成开关       
+
                 this.dataList = response.data.data
+
             }, function(response) { // 这里是处理错误的回调
+
                 console.log(response)
+                
             });
         }
     }

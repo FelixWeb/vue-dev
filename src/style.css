@@ -65,3 +65,23 @@ a{
 .router-view{
     padding: 1rem;
 }
+.item-ul li{
+    list-style: none;
+    padding: 0.5rem 0;
+    clear: both;
+}
+.item-img-span{
+    display: inline-block;
+    width: 20%;
+}
+.item-img{
+    width: 100%;
+}
+.item-title{
+    width: 75%;
+    display: inline-block;
+    float: right;
+}
+.item-ul li a{
+    font-size: 1rem;
+}
